@@ -30,6 +30,16 @@ struct TaskView: View {
                 Text("User ID: \(task.userId.uuidString)")
                     .font(.subheadline)
                     .padding(.bottom, 5)
+
+                // UI elements to show task information and user attachments
+                Text("User Attachments:")
+                    .font(.headline)
+                    .padding(.top, 10)
+                ForEach(taskModel.getTasks(for: task.userId)) { userTask in
+                    Text(userTask.title)
+                        .font(.subheadline)
+                        .padding(.bottom, 2)
+                }
             } else {
                 Text("Task not found")
                     .font(.title)
